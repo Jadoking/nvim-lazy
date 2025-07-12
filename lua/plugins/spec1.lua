@@ -53,30 +53,6 @@ return {
   -- Git integration
   { "tpope/vim-fugitive", cmd = { "Git", "Gstatus", "Gblame" } },
 
-  -- Mason for managing LSP/DAP installers
-  {
-    "williamboman/mason.nvim",
-    cmd = { "Mason", "MasonInstall", "MasonUninstall" },
-    config = function()
-      require("mason").setup()
-    end,
-  },
-  {
-    "williamboman/mason-lspconfig.nvim",
-    dependencies = { "williamboman/mason.nvim" },
-  },
-
-  -- Built-in LSP configuration
-  {
-    "neovim/nvim-lspconfig",
-    event = "BufReadPre",
-    dependencies = { "williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim" },
-    config = function()
-      local lsp = require("lspconfig")
-      lsp.pyright.setup({})
-    end,
-  },
-
   -- Autocompletion setup
   {
     "hrsh7th/nvim-cmp",
