@@ -40,10 +40,12 @@ return {
 
   -- Harpoon for quick file navigation
   {
-    "theprimeagen/harpoon",
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
     keys = { "<leader>hm", "<leader>ht" },
+    dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
-      require("harpoon").setup({})
+      require("harpoon"):setup()
     end,
   },
 
