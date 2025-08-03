@@ -1,4 +1,5 @@
 local builtin = require('telescope.builtin')
+local themes = require('telescope.themes')
 
 vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
 vim.keymap.set('n', '<C-p>', builtin.git_files, {})
@@ -7,8 +8,7 @@ vim.keymap.set('n', '<leader>ps', function()
 end)
 
 vim.keymap.set('n', 'gd', function()
-  local opts = require('telescope.themes').get_dropdown()
-  builtin.lsp_definitions(vim.tbl_extend("force", opts, {
-    jump_type = nil,  -- don't auto-jump on 1 result
-  }))
+  builtin.lsp_definitions(themes.get_dropdown({ jump_type = "never" }))
 end)
+
+vim.keymap.set('n', 'gD', function() builtin.lsp_references() end)
